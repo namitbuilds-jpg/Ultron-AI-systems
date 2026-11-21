@@ -1,0 +1,20 @@
+# ULTRON 5.1 - Laptop Authority Agent dependencies
+# Ranges, not exact pins: Python 3.14 has no wheels for the old pins
+# (pywin32==306, pillow==10.4.0, psutil==5.9.8).
+#
+# Install:  pip install -r requirements-agent.txt
+
+# --- core (all platforms) ---
+websockets>=13,<18
+psutil>=6.1,<8
+pillow>=11,<13
+
+# --- Windows only (best-effort; agent still starts if one of these fails) ---
+pycaw>=20240210 ; sys_platform == "win32"
+comtypes>=1.4.0 ; sys_platform == "win32"
+pywin32>=311 ; sys_platform == "win32"
+pygetwindow>=0.0.9 ; sys_platform == "win32"
+
+# --- display + input control ---
+pyautogui>=0.9.54 ; sys_platform == "win32" or sys_platform == "darwin"
+screen-brightness-control>=0.23.0 ; sys_platform == "win32" or sys_platform == "linux"

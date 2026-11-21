@@ -1,0 +1,105 @@
+================================================================================
+  ULTRON - HOW TO RUN IT  (the simple version)
+================================================================================
+
+WHAT YOU NEED
+-------------
+  1. A folder with these files in it (you get this from the zip file)
+  2. Ollama  - free, download from https://ollama.com/download
+  3. Python  - free, download from https://python.org/downloads
+     (during install, TICK the box that says "Add python.exe to PATH")
+
+
+STEP 1 - UNZIP
+--------------
+  Right click the zip file -> "Extract All..." -> choose a spot, like Desktop\Ultron
+  You should now see files like:  ultron.html, start_ultron_agent.bat, selftest.py
+
+
+STEP 2 - INSTALL OLLAMA
+----------------------
+  Go to https://ollama.com/download -> download -> install it
+  Ollama starts automatically. Leave it running in the background.
+
+
+STEP 3 - GET THE MODELS (one time only, needs internet)
+--------------------------------------------------------
+  Press Win key, type "cmd", hit Enter
+  Now type these two commands, one at a time:
+
+  ollama pull gemma4:12b
+  ollama pull qwen2.5-coder:7b
+
+  These are big files (about 8GB and 5GB). Let them finish.
+
+  >> SMALL LAPTOP (8GB RAM)? Use these instead:
+     ollama pull gemma4:e2b
+     ollama pull qwen2.5-coder:1.5b
+
+  >> To close this window: type "exit" and hit Enter
+
+
+STEP 4 - START THE AGENT (the part that controls your laptop)
+--------------------------------------------------------------
+  Double-click:   start_ultron_agent.bat
+
+  The first time, it takes about 1 minute to set up. Then it says:
+
+      ULTRON AGENT - ws://127.0.0.1:8765
+
+  LEAVE THAT BLACK WINDOW OPEN. Just switch to your browser.
+  (If you close it, the laptop controls stop working. The chat still works.)
+
+
+STEP 5 - OPEN ULTRON
+--------------------
+  Double-click:   start_hud.bat
+
+  Your browser opens automatically at the Ultron screen.
+  (If it does not, go to http://localhost:8000/ultron.html)
+
+  The sidebar is on the right. Click the box at the bottom and type things like:
+
+      hello
+      set volume to 30%
+      what's the latest news?
+      write a python script that renames files by date
+
+
+STEP 6 - DONE
+--------------
+  Close the two black windows when you're finished.
+
+
+IF SOMETHING DOESN'T WORK
+-------------------------
+  Open the Ultron folder, click the address bar at the top, type "cmd", hit Enter.
+  Then type:
+
+      python selftest.py
+
+  It checks everything and tells you exactly what is missing.
+  (It will complain about Ollama and the agent if you haven't started them yet.)
+
+
+NOTES
+-----
+  * The AI only works while Ollama is running (bottom right of your taskbar).
+  * Gmail, WhatsApp and News need to be switched on in the settings (gear icon).
+  * "Lock my PC", "volume", "brightness" etc. only work while the agent window
+    from Step 4 is open.
+  * Chrome or Edge work best. Firefox is OK too.
+================================================================================
+
+
+CREATIVE STUDIO UPDATE
+----------------------
+1. Copy .env.example to .env.
+2. Generate a unique ULTRON_AGENT_TOKEN in PowerShell and paste it into .env.
+3. Add your own AGNES_API_KEY to .env if you want cloud image/video generation. Set AGNES_BASE_URL=https://apihub.agnes-ai.com/v1. Image/video models are configured by AGNES_IMAGE_MODEL and AGNES_VIDEO_MODEL.
+4. Run start_ultron_media.bat for image/video/presentation features.
+5. Run start_ultron_agent.bat and start_hud.bat as before.
+6. In the HUD, open Settings and paste the same ULTRON_AGENT_TOKEN.
+7. Click the dedicated CREATIVE STUDIO button in the HUD to open Studio in a separate popup window. If popups are blocked, it falls back to the current tab. Do not open studio.html directly from File Explorer; use the local HUD server.
+
+Never upload .env or connectors.json to GitHub. API keys are not included.

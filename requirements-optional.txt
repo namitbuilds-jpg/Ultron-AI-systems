@@ -1,0 +1,18 @@
+# ULTRON 5.1 - OPTIONAL dependencies
+#
+# pywhatkit drives a real browser to send WhatsApp messages. It is
+# unmaintained, pulls in Selenium, and frequently breaks on newer Python
+# versions - which is why it is NOT in requirements-agent.txt.
+#
+# The agent handles a missing pywhatkit gracefully: the WhatsApp connector
+# falls back to opening web.whatsapp.com with the message pre-filled, which
+# needs no extra package at all.
+#
+# Install only if you want fully automatic WhatsApp sending:
+#   pip install -r requirements-optional.txt
+#
+# For reliable unattended sending, use the WhatsApp Business Cloud API
+# instead - it is webhook-based, needs no browser, and works headless.
+
+pywhatkit==5.4
+selenium==4.23.0
